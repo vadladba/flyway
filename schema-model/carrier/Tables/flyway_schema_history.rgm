@@ -1,0 +1,9 @@
+index "carrier"."INDEX_SECD" {
+  table = "carrier"."flyway_schema_history"
+  type = btree
+  columns = [
+    version
+  ]
+  isUnique = False
+}
+

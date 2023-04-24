@@ -9,6 +9,39 @@
   "deployment": {
     "flywayConfFiles": [
       "./flyway.conf"
+    ],
+    "shadowDatabase": {
+      "connectionProvider": {
+        "type": "UsernamePassword",
+        "url": "jdbc:postgresql://localhost:5432/rdspsql",
+        "username": "postgres",
+        "password": {
+          "secretType": "Inline",
+          "data": "Lucky$1507"
+        }
+      },
+      "schema": "carrier",
+      "displayName": "shadowdb_rdspsql"
+    },
+    "generateUndoScripts": true,
+    "targetDatabases": [
+      {
+        "connectionProvider": {
+          "type": "UsernamePassword",
+          "url": "jdbc:postgresql://localhost:5432/target_db",
+          "username": "postgres",
+          "password": {
+            "secretType": "Inline",
+            "data": "Lucky$1507"
+          }
+        },
+        "schemas": [
+          "carrier"
+        ]
+      }
     ]
-  }
+  },
+  "schemas": [
+    "carrier"
+  ]
 }
